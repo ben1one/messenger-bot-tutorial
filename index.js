@@ -74,26 +74,21 @@ function sendGenericMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "title": "Question #1",
+                    "subtitle": "HOW WOULD YOU GREET YOUR FRIEND?",
+                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
                     "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com",
-                        "title": "web url"
+                        "type": "postback",
+                        "title": "G'DAY",
+                        "payload": "Payload for first element in a generic bubble",
                     }, {
                         "type": "postback",
-                        "title": "Postback",
+                        "title": "Hello",
                         "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
+                    }, {
                         "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "title": "Hi",
+                        "payload": "Payload for first element in a generic bubble",
                     }],
                 }]
             }
