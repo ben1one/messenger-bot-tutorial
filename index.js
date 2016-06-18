@@ -71,9 +71,12 @@ app.post('/webhook/', function(req, res) {
                 sendTextMessage(sender, "Here are some popular destinations for you:", token);          
                 consultation(sender, 'offer1');
                 consultation(sender, 'offer2');  
-                
-                sendTextMessage(sender, "So do you want to book now?", token);
-                consultation(sender, "book");
+
+                setTimeout(function(){ 
+                  sendTextMessage(sender, "So do you want to book now?", token);
+                  consultation(sender, "book");
+                }, 5000);
+
                 continue
               }else{
                 consultation(sender, 'period');
@@ -86,8 +89,10 @@ app.post('/webhook/', function(req, res) {
                 consultation(sender, 'offer1');
                 consultation(sender, 'offer2');  
                 
-                sendTextMessage(sender, "So do you want to book now?", token);
-                consultation(sender, "book");
+                setTimeout(function(){ 
+                  sendTextMessage(sender, "So do you want to book now?", token);
+                  consultation(sender, "book");
+                }, 5000);
                 continue
             }                                    
             
