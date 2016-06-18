@@ -5,7 +5,9 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-let j = 0;
+j = 0;
+
+yep = {uk:0, us:0, au:0};
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -36,15 +38,18 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            if (text === 'Generic') {
-                sendGenericMessage(sender)
+            if (text.toLowerCase() === 'yep') {
+								//Reset
+								yep = {uk:0, us:0, au:0};
+                yep(sender, 1)
                 continue
             }
             sendTextMessage(sender, (j++)+" Text received, echo: " + text.substring(0, 200))
         }
 				if (event.postback) {
 					let text = JSON.stringify(event.postback)
-					sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+					yep(sender, event.postback)
+					//sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
 					continue
 				}
     }
@@ -108,6 +113,76 @@ function sendGenericMessage(sender) {
         json: {
             recipient: {id:sender},
             message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
+function yep(sender, questionNum) {
+    let messageData1 = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Question #1",
+                    "subtitle": "HOW WOULD YOU GREET YOUR FRIEND?",
+                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "G'DAY",
+                        "payload": "1-au",
+                    }, {
+                        "type": "postback",
+                        "title": "Hello",
+                        "payload": "1-uk",
+                    }, {
+                        "type": "postback",
+                        "title": "Hi",
+                        "payload": "1-us",
+                    }],
+                }]
+            }
+        }
+    }
+		let messageData2 = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Question #2",
+                    "subtitle": "LET'S HAVE SOME BREAKFAST. WHAT WOULD YOU LIKE?",
+                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "VEGEMITE",
+                        "payload": "2-au",
+                    }, {
+                        "type": "postback",
+                        "title": "BUTTERMILK PANCAKES",
+                        "payload": "2-us",
+                    }, {
+                        "type": "postback",
+                        "title": "SCRAMBLED EGGS BACON & BEAN",
+                        "payload": "2-uk",
+                    }],
+                }]
+            }
+        }
+    }	
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData1,
         }
     }, function(error, response, body) {
         if (error) {
