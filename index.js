@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-var i = 0;
+var j = 0;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -40,7 +40,7 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            sendTextMessage(sender, (i++)+" Text received, echo: " + text.substring(0, 200))
+            sendTextMessage(sender, (j++)+" Text received, echo: " + text.substring(0, 200))
         }
 				if (event.postback) {
 					let text = JSON.stringify(event.postback)
