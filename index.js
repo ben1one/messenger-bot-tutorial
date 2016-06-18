@@ -162,20 +162,16 @@ function consultation(sender, action) {
                     "image_url": "http://media.ef.com/sitecore/__/~/media/universal/tiles/2016/1-19x1/tile-language-v2/00.jpg",
                     "buttons": [{
                         "type": "postback",
-                        "title": "7-13",
+                        "title": "7-18",
                         "payload": "age1",
                     }, {
                         "type": "postback",
                         "title": "18-25",
-                        "payload": "age3",
-                    },{
-                        "type": "postback",
-                        "title": "19-24",
-                        "payload": "age4",
+                        "payload": "age2",
                     },{
                         "type": "postback",
                         "title": "25+",
-                        "payload": "age5",
+                        "payload": "age3",
                     }],
                 }]
             }
