@@ -59,10 +59,25 @@ app.post('/webhook/', function(req, res) {
             let text = JSON.stringify(event.postback)
 
             if(text.indexOf("consultation") != -1 ){
-              console.log(`consultation()`);
               consultation(sender, "age");
               continue
             }
+            if(text.indexOf("age") != -1 ){
+              if(text.indexOf("age1") != -1 ){                
+                consultation(sender, 'offer1');
+                consultation(sender, 'offer2');  
+                continue
+              }else{
+                consultation(sender, 'period');
+                continue
+              }
+              continue
+            }    
+            if(text.indexOf("period") != -1 ){            
+                consultation(sender, 'offer1');
+                consultation(sender, 'offer2');  
+                continue
+            }                                    
             
             yep(sender, text)
             console.log(`${myYep.uk} ${myYep.us}  ${myYep.au} `);
@@ -178,8 +193,69 @@ function consultation(sender, action) {
             }
         }
     }
+    let period = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "HOW OLD ARE YOU?",
+                    "subtitle": "",
+                    "image_url": "http://media.ef.com/sitecore/__/~/media/universal/tiles/2016/1-19x1/tile-language-v2/00.jpg",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "2 Weeks to 5 Months",
+                        "payload": "period1",
+                    }, {
+                        "type": "postback",
+                        "title": "6 Months or longer",
+                        "payload": "period2",
+                    }],
+                }]
+            }
+        }
+    }    
+    let offer1 = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "London",
+                    "subtitle": "",
+                    "image_url": "https://static01.nyt.com/images/2015/12/09/travel/09intransitphoto-london/09intransitphoto-london-facebookJumbo.jpg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "title": "Learn More",
+                        "url": "http://.ef.com/aya/destinations/united-kingdom/london/",
+                    }],
+                }]
+            }
+        }
+    }     
+    let offer2 = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Boston",
+                    "subtitle": "",
+                    "image_url": "http://www.massvacation.com/wp-content/uploads/2013/06/1_Boston__0002_14_SarahM2-31.jpg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "title": "Learn More",
+                        "url": "http://www.ef.com/aya/destinations/united-states/boston/",
+                    }],
+                }]
+            }
+        }
+    }       
     messageData = age;
     if(action =="age"){messageData = age;}
+    if(action =="period"){messageData = period;}
+    if(action =="offer1"){messageData = offer1;}
+    if(action =="offer2"){messageData = offer2;}        
     
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
