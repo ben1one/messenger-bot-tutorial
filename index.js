@@ -123,21 +123,7 @@ function sendGenericMessage(sender) {
 }
 
 function yep(sender, questionNum) {
-		if(questionNum =='1'){
-				messageData = messageData1;
-		}
-		if(questionNum.startsWith('1')){
-				messageData = messageData2;
-		}
-		if(questionNum.endsWith('uk')){
-				myYep.uk++;
-		}
-		if(questionNum.endsWith('us')){
-				myYep.us++;
-		}
-		if(questionNum.endsWith('au')){
-				myYep.au++;
-		}
+
 		
     let messageData1 = {
         "attachment": {
@@ -217,13 +203,30 @@ function yep(sender, questionNum) {
             }
         }
     }		
+
+
+		if(questionNum.startsWith('1')){
+				messageData = messageData2;
+		}
+		if(questionNum.endsWith('uk')){
+				myYep.uk++;
+		}
+		if(questionNum.endsWith('us')){
+				myYep.us++;
+		}
+		if(questionNum.endsWith('au')){
+				myYep.au++;
+		}
+		if(questionNum =='1'){
+				messageData = messageData1;
+		}
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
         method: 'POST',
         json: {
             recipient: {id:sender},
-            message: messageData1,
+            message: messageData,
         }
     }, function(error, response, body) {
         if (error) {
