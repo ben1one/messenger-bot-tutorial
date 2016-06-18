@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-j = 0;
+let j = 0;
 
 myYep = {uk:0, us:0, au:0};
 
