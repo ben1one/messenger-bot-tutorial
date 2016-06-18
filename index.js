@@ -71,6 +71,8 @@ app.post('/webhook/', function(req, res) {
                 sendTextMessage(sender, "Here are some popular destinations for you:", token);          
                 consultation(sender, 'offer1');
                 consultation(sender, 'offer2');  
+                
+                sendTextMessage(sender, "So do you want to book now?", token);
                 consultation(sender, "book");
                 continue
               }else{
@@ -83,6 +85,8 @@ app.post('/webhook/', function(req, res) {
                 sendTextMessage(sender, "Here are some popular destinations for you:", token);
                 consultation(sender, 'offer1');
                 consultation(sender, 'offer2');  
+                
+                sendTextMessage(sender, "So do you want to book now?", token);
                 consultation(sender, "book");
                 continue
             }                                    
@@ -265,9 +269,9 @@ function consultation(sender, action) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Boston",
+                    "title": "CONFIRM BOOKING",
                     "subtitle": "",
-                    "image_url": "http://www.massvacation.com/wp-content/uploads/2013/06/1_Boston__0002_14_SarahM2-31.jpg",
+                    "image_url": "https://c1.staticflickr.com/9/8765/17121923990_ba6b3b8fe6_b.jpg",
                     "buttons": [{
                       "type": "postback",
                       "title": "YES",
