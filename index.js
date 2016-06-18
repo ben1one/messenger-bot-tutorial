@@ -58,7 +58,7 @@ app.post('/webhook/', function(req, res) {
         if (event.postback) {
             let text = JSON.stringify(event.postback)
 
-            if(text=="consultation"){
+            if(text.indexOf("consultation") != -1 ){
               console.log(`consultation()`);
               consultation(sender, "age");
               continue
@@ -348,11 +348,11 @@ function yep(sender, questionNum) {
                     "buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        url: "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Have%20I%20told%20you%20I%20am%20from%20England%3F!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20British%20that%20you%20should%20call%20me%20your%20Royal%20Highness!%20Is%20your%20personality%20Australian%2C%20American%20or%20British%3F%20Take%20this%20quiz%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20abroad!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing3.png",
+                        "url": "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Have%20I%20told%20you%20I%20am%20from%20England%3F!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20British%20that%20you%20should%20call%20me%20your%20Royal%20Highness!%20Is%20your%20personality%20Australian%2C%20American%20or%20British%3F%20Take%20this%20quiz%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20abroad!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing3.png",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
-                        url: "http://www.ef.com/fp/brochure/04/form/",
+                        "url": "http://www.ef.com/fp/brochure/04/form/",
                     }, {
                         "type": "postback",
                         "title": "FREE CONSULTATION",
@@ -375,11 +375,11 @@ function yep(sender, questionNum) {
 										"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        url: "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=I%20am%20secretly%20an%20American!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20American%20I%20could%20be%20a%20Hollywood%20star!%20Would%20you%20like%20to%20have%20my%20autograph%3F%20What%20is%20your%20English-speaking%20personality%3F%20Check%20out%20here%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_Sharing1.png",
+                        "url": "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=I%20am%20secretly%20an%20American!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20American%20I%20could%20be%20a%20Hollywood%20star!%20Would%20you%20like%20to%20have%20my%20autograph%3F%20What%20is%20your%20English-speaking%20personality%3F%20Check%20out%20here%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_Sharing1.png",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
-                        url: "http://www.ef.com/fp/brochure/04/form/",
+                        "url": "http://www.ef.com/fp/brochure/04/form/",
                     }, {
                         "type": "postback",
                         "title": "FREE CONSULTATION",
@@ -402,11 +402,11 @@ function yep(sender, questionNum) {
 										"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        url: "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Did%20you%20know%20I%20am%20an%20Australian%3F!&caption=www.ef.com/hello&description=I%E2%80%99m%20hoping%20like%20a%20Kangaroo%20with%20joy.%20My%20personality%20is%20a%20perfect%20match%20with%20the%20lifestyle%20in%20the%20land%20down%20under!%20Check%20what%20your%20second%20homeland%20is.%20There%20is%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing2.png",
+                        "url": "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Did%20you%20know%20I%20am%20an%20Australian%3F!&caption=www.ef.com/hello&description=I%E2%80%99m%20hoping%20like%20a%20Kangaroo%20with%20joy.%20My%20personality%20is%20a%20perfect%20match%20with%20the%20lifestyle%20in%20the%20land%20down%20under!%20Check%20what%20your%20second%20homeland%20is.%20There%20is%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing2.png",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
-                        url: "http://www.ef.com/fp/brochure/04/form/",
+                        "url": "http://www.ef.com/fp/brochure/04/form/",
                     }, {
                         "type": "postback",
                         "title": "FREE CONSULTATION",
