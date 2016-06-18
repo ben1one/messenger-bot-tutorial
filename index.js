@@ -47,7 +47,7 @@ app.post('/webhook/', function (req, res) {
         }
 				if (event.postback) {
 					let text = JSON.stringify(event.postback)
-					yep(sender, event.postback)
+					yep(sender, text)
 					console.log(`${myYep.uk} ${myYep.us}  ${myYep.au} `);
 					//sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
 					continue
