@@ -157,8 +157,8 @@ function consultation(sender, action) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Question #1",
-                    "subtitle": "HOW OLD ARE YOU?",
+                    "title": "HOW OLD ARE YOU?",
+                    "subtitle": "",
                     "image_url": "http://media.ef.com/sitecore/__/~/media/universal/tiles/2016/1-19x1/tile-language-v2/00.jpg",
                     "buttons": [{
                         "type": "postback",
@@ -172,8 +172,7 @@ function consultation(sender, action) {
                         "type": "postback",
                         "title": "19-24",
                         "payload": "age4",
-                    },
-                     {
+                    },{
                         "type": "postback",
                         "title": "25+",
                         "payload": "age5",
