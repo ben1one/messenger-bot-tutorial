@@ -7,7 +7,7 @@ const app = express()
 
 let j = 0;
 
-myYep = {uk:0, us:0, au:0};
+let myYep = {uk:0, us:0, au:0};
 
 app.set('port', (process.env.PORT || 5000))
 
