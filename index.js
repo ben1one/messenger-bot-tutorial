@@ -40,7 +40,7 @@ app.post('/webhook/', function (req, res) {
             let text = event.message.text.toLowerCase()
             if (text === 'yep') {
 							  myYep = {uk:0, us:0, au:0};
-                yep(sender, 1)
+                yep(sender, "0")
                 continue
             }
             sendTextMessage(sender, (j++)+" Text received, echo: " + text.substring(0, 200))
@@ -204,25 +204,25 @@ function yep(sender, questionNum) {
         }
     }		
 
-
-		if(questionNum.startsWith('1')){
+		if(questionNum.indexOf('0') != -1 ){
 				messageData = messageData2;
 		}
-		if(questionNum.startsWith('2')){
+		if(questionNum.indexOf('1') != -1 ){
+				messageData = messageData2;
+		}
+		if(questionNum.indexOf('2') != -1 ){
 				messageData = messageData3;
-		}		
-		if(questionNum.endsWith('uk')){
+		}
+		if(questionNum.indexOf('uk') != -1 ){
 				myYep.uk++;
 		}
-		if(questionNum.endsWith('us')){
+		if(questionNum.indexOf('us') != -1 ){
 				myYep.us++;
 		}
-		if(questionNum.endsWith('au')){
+		if(questionNum.indexOf('au') != -1 ){
 				myYep.au++;
 		}
-		if(questionNum =='1'){
-				messageData = messageData1;
-		}
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
