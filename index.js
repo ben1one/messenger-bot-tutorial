@@ -59,7 +59,7 @@ app.post('/webhook/', function(req, res) {
             let text = JSON.stringify(event.postback)
 
             if(text=="consultation"){
-              
+              consultation(sender, age);
               continue
             }
             
@@ -149,7 +149,7 @@ function sendGenericMessage(sender) {
     })
 }
 
-function consultation(sender) {
+function consultation(sender, action) {
   let messageData = {}
     let age = {
         "attachment": {
@@ -182,7 +182,8 @@ function consultation(sender) {
             }
         }
     }
-    messageData = age;
+    if(action =="age"){messageData = age;}
+    
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
@@ -411,7 +412,7 @@ function yep(sender, questionNum) {
                         url: "http://www.ef.com/fp/brochure/04/form/",
                     }, {
                         "type": "postback",
-                        "title": "FREE CONSULTATION",
+                        "title": "FREE `CONSULTATION`",
                         "payload": "consultation",
                     }],
                 }]
