@@ -39,6 +39,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text.toLowerCase()
             if (text === 'yep') {
+							  myYep = {uk:0, us:0, au:0};
                 yep(sender, 1)
                 continue
             }
@@ -46,7 +47,7 @@ app.post('/webhook/', function (req, res) {
         }
 				if (event.postback) {
 					let text = JSON.stringify(event.postback)
-					yep(sender, event.postback)
+					yep(sender, event.postback+ `${myYep.uk} ${myYep.us}  ${myYep.au} `)
 					//sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
 					continue
 				}
@@ -121,7 +122,21 @@ function sendGenericMessage(sender) {
     })
 }
 
-function yep(sender, questionNum) {
+function yep(sender, questionNum = 1) {
+
+if(questionNum.startsWith('1')){
+		
+}
+if(questionNum.endsWith('uk')){
+		myYep.uk++;
+}
+if(questionNum.endsWith('us')){
+		myYep.us++;
+}
+if(questionNum.endsWith('au')){
+		myYep.au++;
+}
+		
     let messageData1 = {
         "attachment": {
             "type": "template",
@@ -174,6 +189,32 @@ function yep(sender, questionNum) {
             }
         }
     }	
+		let messageData3 = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Question #3",
+                    "subtitle": "WHICH IS YOUR FAVORITE LANDMARK?",
+                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "STATUE OF LIBERTY",
+                        "payload": "3-us",
+                    }, {
+                        "type": "postback",
+                        "title": "OPERA HOUSE",
+                        "payload": "3-au",
+                    }, {
+                        "type": "postback",
+                        "title": "BIG BEN",
+                        "payload": "3-uk",
+                    }],
+                }]
+            }
+        }
+    }		
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
