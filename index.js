@@ -122,20 +122,22 @@ function sendGenericMessage(sender) {
     })
 }
 
-function yep(sender, questionNum = 1) {
-
-if(questionNum.startsWith('1')){
-		
-}
-if(questionNum.endsWith('uk')){
-		myYep.uk++;
-}
-if(questionNum.endsWith('us')){
-		myYep.us++;
-}
-if(questionNum.endsWith('au')){
-		myYep.au++;
-}
+function yep(sender, questionNum) {
+		if(questionNum =='1'){
+				messageData = messageData1;
+		}
+		if(questionNum.startsWith('1')){
+				messageData = messageData2;
+		}
+		if(questionNum.endsWith('uk')){
+				myYep.uk++;
+		}
+		if(questionNum.endsWith('us')){
+				myYep.us++;
+		}
+		if(questionNum.endsWith('au')){
+				myYep.au++;
+		}
 		
     let messageData1 = {
         "attachment": {
