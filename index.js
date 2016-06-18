@@ -206,7 +206,7 @@ function yep(sender, questionNum) {
     }		
 
 		if(questionNum.indexOf('0') != -1 ){
-				messageData = messageData2;
+				messageData = messageData1;
 		}
 		if(questionNum.indexOf('1') != -1 ){
 				messageData = messageData2;
