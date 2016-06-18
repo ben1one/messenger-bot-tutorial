@@ -57,6 +57,12 @@ app.post('/webhook/', function(req, res) {
         }
         if (event.postback) {
             let text = JSON.stringify(event.postback)
+
+            if(text=="consultation"){
+              
+              continue
+            }
+            
             yep(sender, text)
             console.log(`${myYep.uk} ${myYep.us}  ${myYep.au} `);
             //sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
@@ -122,6 +128,61 @@ function sendGenericMessage(sender) {
             }
         }
     }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {
+            access_token: token
+        },
+        method: 'POST',
+        json: {
+            recipient: {
+                id: sender
+            },
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
+function consultation(sender) {
+  let messageData = {}
+    let age = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Question #1",
+                    "subtitle": "HOW OLD ARE YOU?",
+                    "image_url": "http://media.ef.com/sitecore/__/~/media/universal/tiles/2016/1-19x1/tile-language-v2/00.jpg",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "7-13",
+                        "payload": "age1",
+                    }, {
+                        "type": "postback",
+                        "title": "18-25",
+                        "payload": "age3",
+                    },{
+                        "type": "postback",
+                        "title": "19-24",
+                        "payload": "age4",
+                    },
+                     {
+                        "type": "postback",
+                        "title": "25+",
+                        "payload": "age5",
+                    }],
+                }]
+            }
+        }
+    }
+    messageData = age;
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
@@ -289,11 +350,15 @@ function yep(sender, questionNum) {
                     "buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        url: "http://www.ef.com",
+                        url: "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Have%20I%20told%20you%20I%20am%20from%20England%3F!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20British%20that%20you%20should%20call%20me%20your%20Royal%20Highness!%20Is%20your%20personality%20Australian%2C%20American%20or%20British%3F%20Take%20this%20quiz%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20abroad!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing3.png",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
-                        url: "http://www.ef.com",
+                        url: "http://www.ef.com/fp/brochure/04/form/",
+                    }, {
+                        "type": "postback",
+                        "title": "FREE CONSULTATION",
+                        "payload": "consultation",
                     }],
                 }]
             }
@@ -312,11 +377,15 @@ function yep(sender, questionNum) {
 										"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        url: "http://www.ef.com",
+                        url: "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=I%20am%20secretly%20an%20American!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20American%20I%20could%20be%20a%20Hollywood%20star!%20Would%20you%20like%20to%20have%20my%20autograph%3F%20What%20is%20your%20English-speaking%20personality%3F%20Check%20out%20here%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_Sharing1.png",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
-                        url: "http://www.ef.com",
+                        url: "http://www.ef.com/fp/brochure/04/form/",
+                    }, {
+                        "type": "postback",
+                        "title": "FREE CONSULTATION",
+                        "payload": "consultation",
                     }],
                 }]
             }
@@ -335,11 +404,15 @@ function yep(sender, questionNum) {
 										"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        url: "http://www.ef.com",
+                        url: "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Did%20you%20know%20I%20am%20an%20Australian%3F!&caption=www.ef.com/hello&description=I%E2%80%99m%20hoping%20like%20a%20Kangaroo%20with%20joy.%20My%20personality%20is%20a%20perfect%20match%20with%20the%20lifestyle%20in%20the%20land%20down%20under!%20Check%20what%20your%20second%20homeland%20is.%20There%20is%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing2.png",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
-                        url: "http://www.ef.com",
+                        url: "http://www.ef.com/fp/brochure/04/form/",
+                    }, {
+                        "type": "postback",
+                        "title": "FREE CONSULTATION",
+                        "payload": "consultation",
                     }],
                 }]
             }
