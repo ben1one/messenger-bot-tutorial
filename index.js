@@ -154,7 +154,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "Question #1",
                     "subtitle": "HOW WOULD YOU GREET YOUR FRIEND?",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/1.png",
                     "buttons": [{
                         "type": "postback",
                         "title": "G'DAY",
@@ -180,7 +180,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "Question #2",
                     "subtitle": "LET'S HAVE SOME BREAKFAST. WHAT WOULD YOU LIKE?",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/2.png",
                     "buttons": [{
                         "type": "postback",
                         "title": "VEGEMITE",
@@ -206,7 +206,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "Question #3",
                     "subtitle": "WHICH IS YOUR FAVORITE LANDMARK?",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/3.png",
                     "buttons": [{
                         "type": "postback",
                         "title": "STATUE OF LIBERTY",
@@ -232,7 +232,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "Question #4",
                     "subtitle": "WE ALL HAVE A PAIR, DON'T WE? WHAT WOULD YOU CALL THEM?",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/4.png",
                     "buttons": [{
                         "type": "postback",
                         "title": "SNEAKERS",
@@ -258,7 +258,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "Question #5",
                     "subtitle": "WE ARE HALF WAY THROUGH. LET'S BREAK FOR LUNCH! WHAT WOULD YOU LIKE?",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/5.png",
                     "buttons": [{
                         "type": "postback",
                         "title": "FISH & CHIPS",
@@ -285,7 +285,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "YOUR PERSONALITY IS SO BRITISH",
                     "subtitle": "Jolly Good! By your answers it seems like Great Britain, or even Buckingham palace is your second home. Hail a black cab and get a British accent to match your Royal style. Click to proceed to the next step – Your chance to win a trip to live and study in England!",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/uk.png",
                     "buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
@@ -308,7 +308,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "YOUR PERSONALITY IS SO AMERICAN",
                     "subtitle": "Howdy Buddy, if we didn’t know better we would have guessed you were American! Whether you would end up in LA, NY or somewhere in between we are sure you would love the American way of life. Now cruise on to get an American accent to match your style. Click to proceed to the next step – Your chance to win a two week language course in the states!",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/us.png",
 										"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
@@ -331,7 +331,7 @@ function yep(sender, questionNum) {
                 "elements": [{
                     "title": "YOUR PERSONALITY IS SO AUSTRALIAN",
                     "subtitle": "G'day Mate, are you sure you are not a fellow Australian? From the beaches to the outback – we are fairly sure you would fit right into the relaxed Australian lifestyle. Hop on like a Kangaroo and match that chilled out Aussie style of yours with a casual Australian accent. Click to proceed to the next step – Your chance to win a trip to live and study down under!",
-                    "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
+                    "image_url": "http://makione.com/ef/yep-bot/au.png",
 										"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
