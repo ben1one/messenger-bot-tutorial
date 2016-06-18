@@ -123,7 +123,7 @@ function sendGenericMessage(sender) {
 }
 
 function yep(sender, questionNum) {
-
+	 let messageData = {};
 		
     let messageData1 = {
         "attachment": {
@@ -208,6 +208,9 @@ function yep(sender, questionNum) {
 		if(questionNum.startsWith('1')){
 				messageData = messageData2;
 		}
+		if(questionNum.startsWith('2')){
+				messageData = messageData3;
+		}		
 		if(questionNum.endsWith('uk')){
 				myYep.uk++;
 		}
