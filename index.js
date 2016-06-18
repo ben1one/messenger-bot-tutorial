@@ -59,7 +59,7 @@ app.post('/webhook/', function(req, res) {
             let text = JSON.stringify(event.postback)
 
             if(text=="consultation"){
-              consultation(sender, age);
+              consultation(sender, "age");
               continue
             }
             
