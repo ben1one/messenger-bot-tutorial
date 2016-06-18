@@ -283,21 +283,17 @@ function yep(sender, questionNum) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "UK",
-                    "subtitle": "WE ARE HALF WAY THROUGH. LET'S BREAK FOR LUNCH! WHAT WOULD YOU LIKE?",
+                    "title": "YOUR PERSONALITY IS SO BRITISH",
+                    "subtitle": "Jolly Good! By your answers it seems like Great Britain, or even Buckingham palace is your second home. Hail a black cab and get a British accent to match your Royal style. Click to proceed to the next step – Your chance to win a trip to live and study in England!",
                     "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
                     "buttons": [{
-                        "type": "postback",
-                        "title": "FISH & CHIPS",
-                        "payload": "5-uk",
+                        "type": "web_url",
+                        "title": "SHARE YOUR RESULT",
+                        url: "http://www.ef.com",
                     }, {
-                        "type": "postback",
-                        "title": "HAMBURGER",
-                        "payload": "5-us",
-                    }, {
-                        "type": "postback",
-                        "title": "BARBIE",
-                        "payload": "5-au",
+                        "type": "web_url",
+                        "title": "WIN A TRIP",
+                        url: "http://www.ef.com",
                     }],
                 }]
             }
@@ -310,21 +306,17 @@ function yep(sender, questionNum) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "US",
-                    "subtitle": "WE ARE HALF WAY THROUGH. LET'S BREAK FOR LUNCH! WHAT WOULD YOU LIKE?",
+                    "title": "YOUR PERSONALITY IS SO AMERICAN",
+                    "subtitle": "Howdy Buddy, if we didn’t know better we would have guessed you were American! Whether you would end up in LA, NY or somewhere in between we are sure you would love the American way of life. Now cruise on to get an American accent to match your style. Click to proceed to the next step – Your chance to win a two week language course in the states!",
                     "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "FISH & CHIPS",
-                        "payload": "5-uk",
+										"buttons": [{
+                        "type": "web_url",
+                        "title": "SHARE YOUR RESULT",
+                        url: "http://www.ef.com",
                     }, {
-                        "type": "postback",
-                        "title": "HAMBURGER",
-                        "payload": "5-us",
-                    }, {
-                        "type": "postback",
-                        "title": "BARBIE",
-                        "payload": "5-au",
+                        "type": "web_url",
+                        "title": "WIN A TRIP",
+                        url: "http://www.ef.com",
                     }],
                 }]
             }
@@ -337,21 +329,17 @@ function yep(sender, questionNum) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "AU",
-                    "subtitle": "WE ARE HALF WAY THROUGH. LET'S BREAK FOR LUNCH! WHAT WOULD YOU LIKE?",
+                    "title": "YOUR PERSONALITY IS SO AUSTRALIAN",
+                    "subtitle": "G'day Mate, are you sure you are not a fellow Australian? From the beaches to the outback – we are fairly sure you would fit right into the relaxed Australian lifestyle. Hop on like a Kangaroo and match that chilled out Aussie style of yours with a casual Australian accent. Click to proceed to the next step – Your chance to win a trip to live and study down under!",
                     "image_url": "http://content.screencast.com/users/BenSuen/folders/Jing/media/bee319dd-2d2d-48f3-a09b-5e30deec1fbd/2016-06-10_1640.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "FISH & CHIPS",
-                        "payload": "5-uk",
+										"buttons": [{
+                        "type": "web_url",
+                        "title": "SHARE YOUR RESULT",
+                        url: "http://www.ef.com",
                     }, {
-                        "type": "postback",
-                        "title": "HAMBURGER",
-                        "payload": "5-us",
-                    }, {
-                        "type": "postback",
-                        "title": "BARBIE",
-                        "payload": "5-au",
+                        "type": "web_url",
+                        "title": "WIN A TRIP",
+                        url: "http://www.ef.com",
                     }],
                 }]
             }
