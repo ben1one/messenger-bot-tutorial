@@ -62,8 +62,8 @@ app.post('/webhook/', function(req, res) {
               consultation(sender, "age");
               continue
             }
-            if(text.indexOf("book") != -1 ){
-              
+            if(text.indexOf("end") != -1 ){
+              sendTextMessage(sender, "Thank you!! 😁", token);   
               continue
             }            
             if(text.indexOf("age") != -1 ){
@@ -271,7 +271,7 @@ function consultation(sender, action) {
                     "buttons": [{
                       "type": "postback",
                       "title": "YES",
-                      "payload": "",
+                      "payload": "end",
                     }],
                 }]
             }
