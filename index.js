@@ -62,10 +62,16 @@ app.post('/webhook/', function(req, res) {
               consultation(sender, "age");
               continue
             }
+            if(text.indexOf("book") != -1 ){
+              
+              continue
+            }            
             if(text.indexOf("age") != -1 ){
-              if(text.indexOf("age1") != -1 ){                
+              if(text.indexOf("age1") != -1 ){      
+                sendTextMessage(sender, "Here are some popular destinations for you:", token);          
                 consultation(sender, 'offer1');
                 consultation(sender, 'offer2');  
+                consultation(sender, "book");
                 continue
               }else{
                 consultation(sender, 'period');
@@ -74,8 +80,10 @@ app.post('/webhook/', function(req, res) {
               continue
             }    
             if(text.indexOf("period") != -1 ){            
+                sendTextMessage(sender, "Here are some popular destinations for you:", token);
                 consultation(sender, 'offer1');
                 consultation(sender, 'offer2');  
+                consultation(sender, "book");
                 continue
             }                                    
             
@@ -199,7 +207,7 @@ function consultation(sender, action) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "HOW OLD ARE YOU?",
+                    "title": "HOW LONG WOULD YOU LIKE TO TRAVEL?",
                     "subtitle": "",
                     "image_url": "http://media.ef.com/sitecore/__/~/media/universal/tiles/2016/1-19x1/tile-language-v2/00.jpg",
                     "buttons": [{
@@ -250,12 +258,31 @@ function consultation(sender, action) {
                 }]
             }
         }
-    }       
+    }   
+    let book = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Boston",
+                    "subtitle": "",
+                    "image_url": "http://www.massvacation.com/wp-content/uploads/2013/06/1_Boston__0002_14_SarahM2-31.jpg",
+                    "buttons": [{
+                      "type": "postback",
+                      "title": "YES",
+                      "payload": "",
+                    }],
+                }]
+            }
+        }
+    }          
     messageData = age;
     if(action =="age"){messageData = age;}
     if(action =="period"){messageData = period;}
     if(action =="offer1"){messageData = offer1;}
-    if(action =="offer2"){messageData = offer2;}        
+    if(action =="offer2"){messageData = offer2;}  
+    if(action =="book"){messageData = book;}       
     
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
