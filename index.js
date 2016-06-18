@@ -37,10 +37,8 @@ app.post('/webhook/', function (req, res) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
         if (event.message && event.message.text) {
-            let text = event.message.text
-            if (text.toLowerCase() === 'yep') {
-								//Reset
-								yep = {uk:0, us:0, au:0};
+            let text = event.message.text.toLowerCase()
+            if (text === 'yep') {
                 yep(sender, 1)
                 continue
             }
@@ -149,7 +147,7 @@ function yep(sender, questionNum) {
                 }]
             }
         }
-    }
+    };
 		let messageData2 = {
         "attachment": {
             "type": "template",
