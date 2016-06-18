@@ -59,6 +59,7 @@ app.post('/webhook/', function(req, res) {
             let text = JSON.stringify(event.postback)
 
             if(text=="consultation"){
+              console.log(`consultation()`);
               consultation(sender, "age");
               continue
             }
@@ -177,6 +178,7 @@ function consultation(sender, action) {
             }
         }
     }
+    messageData = age;
     if(action =="age"){messageData = age;}
     
     request({
@@ -407,7 +409,7 @@ function yep(sender, questionNum) {
                         url: "http://www.ef.com/fp/brochure/04/form/",
                     }, {
                         "type": "postback",
-                        "title": "FREE `CONSULTATION`",
+                        "title": "FREE CONSULTATION",
                         "payload": "consultation",
                     }],
                 }]
