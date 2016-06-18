@@ -85,15 +85,15 @@ function sendGenericMessage(sender) {
                     "buttons": [{
                         "type": "postback",
                         "title": "G'DAY",
-                        "payload": "Payload for first element in a generic bubble",
+                        "payload": "Payload for 1 element in a generic bubble",
                     }, {
                         "type": "postback",
                         "title": "Hello",
-                        "payload": "Payload for first element in a generic bubble",
+                        "payload": "Payload for 2 element in a generic bubble",
                     }, {
                         "type": "postback",
                         "title": "Hi",
-                        "payload": "Payload for first element in a generic bubble",
+                        "payload": "Payload for 3 element in a generic bubble",
                     }],
                 }]
             }
