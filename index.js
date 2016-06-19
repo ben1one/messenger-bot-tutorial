@@ -63,7 +63,7 @@ app.post('/webhook/', function(req, res) {
               continue
             }
             if(text.indexOf("end") != -1 ){
-              sendTextMessage(sender, "Thank you!! 😁", token);   
+              sendTextMessage(sender, "Thank you!! ??", token);   
               continue
             }            
             if(text.indexOf("age") != -1 ){
@@ -75,7 +75,7 @@ app.post('/webhook/', function(req, res) {
                 setTimeout(function(){ 
                   sendTextMessage(sender, "So do you want to book now?", token);
                   consultation(sender, "book");
-                }, 5000);
+                }, 10000);
 
                 continue
               }else{
@@ -92,7 +92,7 @@ app.post('/webhook/', function(req, res) {
                 setTimeout(function(){ 
                   sendTextMessage(sender, "So do you want to book now?", token);
                   consultation(sender, "book");
-                }, 5000);
+                }, 10000);
                 continue
             }                                    
             
@@ -106,8 +106,7 @@ app.post('/webhook/', function(req, res) {
 })
 
 
-const token = "EAAIGYIOEAgcBANZBxG150it0ymaaZAUyOd85kx4t0aIP82l0NgKHfKcFFzYHWGOdAGcRDSvA5NqUsjPq1i60cdOuPNCnsisABzxZBvRWPnsx18gtzAlI6s1X9HenWCokaUWkAZCYZCS3Y38BUBoiIMDBduCpGz6h5BCg3oVXKEgZDZD"
-
+const token = "EAAIGYIOEAgcBAJR5qEyK0AXKSGQxD3lRZA5iuUEaJ56ZBo8Rt28kvgOexrwXhLJZCXXB3PseteDkNpZBArIxS2vAYCoIguytpvFJadZA36D417ZAc2ZAPEzDek85rWNPqRlZCHuFHfnZBAL9E6il5IdxAmVFSu1TBg2wczFrjNFHWnwZDZD"
 function sendTextMessage(sender, text) {
     let messageData = {
         text: text
@@ -218,7 +217,7 @@ function consultation(sender, action) {
                 "elements": [{
                     "title": "HOW LONG WOULD YOU LIKE TO TRAVEL?",
                     "subtitle": "",
-                    "image_url": "http://media.ef.com/sitecore/__/~/media/universal/tiles/2016/1-19x1/tile-language-v2/00.jpg",
+                    "image_url": "http://mediakey1.ef.com/sitecore/__/~/media/universal/tiles/2016/1-5x1/tile-academic-v2/00.jpg",
                     "buttons": [{
                         "type": "postback",
                         "title": "2 Weeks to 5 Months",
