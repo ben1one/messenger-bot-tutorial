@@ -63,7 +63,7 @@ app.post('/webhook/', function(req, res) {
               continue
             }
             if(text.indexOf("end") != -1 ){
-              sendTextMessage(sender, "Thank you!! ??", token);   
+              sendTextMessage(sender, "Thank you!! 😁", token);   
               continue
             }            
             if(text.indexOf("age") != -1 ){
