@@ -544,7 +544,14 @@ function yep(sender, questionNum) {
         messageData = messageData5;
     }
 
-
+	if (questionNum.indexOf('4') != -1) {
+        messageData = messageData5;
+    }
+	
+	//hard code result
+	if (questionNum.indexOf('5') != -1) {
+        messageData = messageUK;
+    }	
 
     if (questionNum.indexOf('uk') != -1) {
         myYep.uk++;
@@ -556,17 +563,18 @@ function yep(sender, questionNum) {
         myYep.au++;
     }
 	
-		//Last Question
+	
+	/*
+	//Last Question
 	if (questionNum.indexOf('5') != -1) {
 			console.log('lastQ');
         let myArrary = [myYep.uk, myYep.us, myYep.au];
 				 		myArrary = myArrary.sort();
 				let largetst = 	myArrary[2]	; //Last element
-				messageData = messageUK;
 				if(myYep.uk==largetst){messageData = messageUK;}
 				if(myYep.us==largetst){messageData = messageUS;}
 				if(myYep.au==largetst){messageData = messageAU;}
-    }	
+    }	*/
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
