@@ -459,7 +459,7 @@ function yep(sender, questionNum) {
                     "buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        "url": "http://www.ef.com/",
+                        "url": "https://goo.gl/WOjpdt",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
