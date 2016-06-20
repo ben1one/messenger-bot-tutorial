@@ -557,11 +557,12 @@ function yep(sender, questionNum) {
     }
 	
 		//Last Question
-		if (questionNum.indexOf('5') != -1) {
+	if (questionNum.indexOf('5') != -1) {
 			console.log('lastQ');
         let myArrary = [myYep.uk, myYep.us, myYep.au];
 				 		myArrary = myArrary.sort();
 				let largetst = 	myArrary[2]	; //Last element
+				messageData = messageUK;
 				if(myYep.uk==largetst){messageData = messageUK;}
 				if(myYep.us==largetst){messageData = messageUS;}
 				if(myYep.au==largetst){messageData = messageAU;}
