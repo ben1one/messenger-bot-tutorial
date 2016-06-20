@@ -459,7 +459,7 @@ function yep(sender, questionNum) {
                     "buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
-                        "url": "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Have%20I%20told%20you%20I%20am%20from%20England%3F!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20British%20that%20you%20should%20call%20me%20your%20Royal%20Highness!%20Is%20your%20personality%20Australian%2C%20American%20or%20British%3F%20Take%20this%20quiz%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20abroad!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing3.png",
+                        "url": "http://www.ef.com/",
                     }, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
@@ -510,7 +510,7 @@ function yep(sender, questionNum) {
                     "title": "YOUR PERSONALITY IS SO AUSTRALIAN",
                     "subtitle": "G'day Mate, are you sure you are not a fellow Australian? From the beaches to the outback – we are fairly sure you would fit right into the relaxed Australian lifestyle. Hop on like a Kangaroo and match that chilled out Aussie style of yours with a casual Australian accent. Click to proceed to the next step – Your chance to win a trip to live and study down under!",
                     "image_url": "http://makione.com/ef/yep-bot/au.png",
-										"buttons": [{
+						"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
                         "url": "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Did%20you%20know%20I%20am%20an%20Australian%3F!&caption=www.ef.com/hello&description=I%E2%80%99m%20hoping%20like%20a%20Kangaroo%20with%20joy.%20My%20personality%20is%20a%20perfect%20match%20with%20the%20lifestyle%20in%20the%20land%20down%20under!%20Check%20what%20your%20second%20homeland%20is.%20There%20is%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing2.png",
@@ -548,10 +548,7 @@ function yep(sender, questionNum) {
         messageData = messageData5;
     }
 	
-	//hard code result
-	if (questionNum.indexOf('5') != -1) {
-        messageData = messageUK;
-    }	
+
 
     if (questionNum.indexOf('uk') != -1) {
         myYep.uk++;
@@ -564,17 +561,18 @@ function yep(sender, questionNum) {
     }
 	
 	
-	/*
+	
 	//Last Question
 	if (questionNum.indexOf('5') != -1) {
-			console.log('lastQ');
+		console.log('lastQ');
         let myArrary = [myYep.uk, myYep.us, myYep.au];
-				 		myArrary = myArrary.sort();
+				myArrary = myArrary.sort();
 				let largetst = 	myArrary[2]	; //Last element
 				if(myYep.uk==largetst){messageData = messageUK;}
 				if(myYep.us==largetst){messageData = messageUS;}
 				if(myYep.au==largetst){messageData = messageAU;}
-    }	*/
+				messageData = messageUK;
+    }
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
