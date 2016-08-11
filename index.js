@@ -565,7 +565,7 @@ function yep(sender, questionNum) {
 		//if(myYep.uk==largetst){messageData = messageUK;}
 		//if(myYep.us==largetst){messageData = messageUS;}
 		//if(myYep.au==largetst){messageData = messageAU;}
-		messageData = messageUK;
+		messageData = messageUS;
 	}
 	
     request({
