@@ -32,7 +32,7 @@ app.get('/', function(req, res) {
 app.get('/webhook/', function(req, res) {
     if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
         res.send(req.query['hub.challenge'])
-    }
+	}
     res.send('Error, wrong token')
 })
 
@@ -49,59 +49,59 @@ app.post('/webhook/', function(req, res) {
                     uk: 0,
                     us: 0,
                     au: 0
-                };
+				};
                 yep(sender, "0")
                 continue
-            }
+			}
             sendTextMessage(sender, (j++) + " Text received, echo: " + text.substring(0, 200))
-        }
+		}
         if (event.postback) {
             let text = JSON.stringify(event.postback)
-
+			
             if(text.indexOf("consultation") != -1 ){
-              consultation(sender, "age");
-              continue
-            }
+				consultation(sender, "age");
+				continue
+			}
             if(text.indexOf("end") != -1 ){
-              sendTextMessage(sender, "Thank you!! 😁", token);   
-              continue
-            }            
+				sendTextMessage(sender, "Thank you!! 😁", token);   
+				continue
+			}            
             if(text.indexOf("age") != -1 ){
-              if(text.indexOf("age1") != -1 ){      
-                sendTextMessage(sender, "Here are some popular destinations for you:", token);          
-                consultation(sender, 'offer1');
-                consultation(sender, 'offer2');  
-
-                setTimeout(function(){ 
-                  sendTextMessage(sender, "So do you want to book now?", token);
-                  consultation(sender, "book");
-                }, 10000);
-
-                continue
-              }else{
-                consultation(sender, 'period');
-                continue
-              }
-              continue
-            }    
+				if(text.indexOf("age1") != -1 ){      
+					sendTextMessage(sender, "Here are some popular destinations for you:", token);          
+					consultation(sender, 'offer1');
+					consultation(sender, 'offer2');  
+					
+					setTimeout(function(){ 
+						sendTextMessage(sender, "So do you want to book now?", token);
+						consultation(sender, "book");
+					}, 10000);
+					
+					continue
+					}else{
+					consultation(sender, 'period');
+					continue
+				}
+				continue
+			}    
             if(text.indexOf("period") != -1 ){            
                 sendTextMessage(sender, "Here are some popular destinations for you:", token);
                 consultation(sender, 'offer1');
                 consultation(sender, 'offer2');  
                 
                 setTimeout(function(){ 
-                  sendTextMessage(sender, "So do you want to book now?", token);
-                  consultation(sender, "book");
-                }, 10000);
+					sendTextMessage(sender, "So do you want to book now?", token);
+					consultation(sender, "book");
+				}, 10000);
                 continue
-            }                                    
+			}                                    
             
             yep(sender, text)
             console.log(`${myYep.uk} ${myYep.us}  ${myYep.au} `);
             //sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
             continue
-        }
-    }
+		}
+	}
     res.sendStatus(200)
 })
 
@@ -110,27 +110,27 @@ const token = "EAAIGYIOEAgcBAJR5qEyK0AXKSGQxD3lRZA5iuUEaJ56ZBo8Rt28kvgOexrwXhLJZ
 function sendTextMessage(sender, text) {
     let messageData = {
         text: text
-    }
-
+	}
+	
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
             access_token: token
-        },
+		},
         method: 'POST',
         json: {
             recipient: {
                 id: sender
-            },
+			},
             message: messageData,
-        }
-    }, function(error, response, body) {
+		}
+		}, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
+			} else if (response.body.error) {
             console.log('Error: ', response.body.error)
-        }
-    })
+		}
+	})
 }
 
 function sendGenericMessage(sender) {
@@ -147,42 +147,42 @@ function sendGenericMessage(sender) {
                         "type": "postback",
                         "title": "G'DAY",
                         "payload": "Payload for 1 element in a generic bubble",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "Hello",
                         "payload": "Payload for 2 element in a generic bubble",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "Hi",
                         "payload": "Payload for 3 element in a generic bubble",
-                    }],
-                }]
-            }
-        }
-    }
+					}],
+				}]
+			}
+		}
+	}
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
             access_token: token
-        },
+		},
         method: 'POST',
         json: {
             recipient: {
                 id: sender
-            },
+			},
             message: messageData,
-        }
-    }, function(error, response, body) {
+		}
+		}, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
+			} else if (response.body.error) {
             console.log('Error: ', response.body.error)
-        }
-    })
+		}
+	})
 }
 
 function consultation(sender, action) {
-  let messageData = {}
+	let messageData = {}
     let age = {
         "attachment": {
             "type": "template",
@@ -196,19 +196,19 @@ function consultation(sender, action) {
                         "type": "postback",
                         "title": "7-18",
                         "payload": "age1",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "18-25",
                         "payload": "age2",
-                    },{
+						},{
                         "type": "postback",
                         "title": "25+",
                         "payload": "age3",
-                    }],
-                }]
-            }
-        }
-    }
+					}],
+				}]
+			}
+		}
+	}
     let period = {
         "attachment": {
             "type": "template",
@@ -222,15 +222,15 @@ function consultation(sender, action) {
                         "type": "postback",
                         "title": "2 Weeks to 5 Months",
                         "payload": "period1",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "6 Months or longer",
                         "payload": "period2",
-                    }],
-                }]
-            }
-        }
-    }    
+					}],
+				}]
+			}
+		}
+	}    
     let offer1 = {
         "attachment": {
             "type": "template",
@@ -244,11 +244,11 @@ function consultation(sender, action) {
                         "type": "web_url",
                         "title": "Learn More",
                         "url": "http://.ef.com/aya/destinations/united-kingdom/london/",
-                    }],
-                }]
-            }
-        }
-    }     
+					}],
+				}]
+			}
+		}
+	}     
     let offer2 = {
         "attachment": {
             "type": "template",
@@ -262,11 +262,11 @@ function consultation(sender, action) {
                         "type": "web_url",
                         "title": "Learn More",
                         "url": "http://www.ef.com/aya/destinations/united-states/boston/",
-                    }],
-                }]
-            }
-        }
-    }   
+					}],
+				}]
+			}
+		}
+	}   
     let book = {
         "attachment": {
             "type": "template",
@@ -277,14 +277,14 @@ function consultation(sender, action) {
                     "subtitle": "",
                     "image_url": "https://c1.staticflickr.com/9/8765/17121923990_ba6b3b8fe6_b.jpg",
                     "buttons": [{
-                      "type": "postback",
-                      "title": "YES",
-                      "payload": "end",
-                    }],
-                }]
-            }
-        }
-    }          
+						"type": "postback",
+						"title": "YES",
+						"payload": "end",
+					}],
+				}]
+			}
+		}
+	}          
     messageData = age;
     if(action =="age"){messageData = age;}
     if(action =="period"){messageData = period;}
@@ -296,26 +296,26 @@ function consultation(sender, action) {
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
             access_token: token
-        },
+		},
         method: 'POST',
         json: {
             recipient: {
                 id: sender
-            },
+			},
             message: messageData,
-        }
-    }, function(error, response, body) {
+		}
+		}, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
+			} else if (response.body.error) {
             console.log('Error: ', response.body.error)
-        }
-    })
+		}
+	})
 }
 
 function yep(sender, questionNum) {
     let messageData = {};
-
+	
     let messageData1 = {
         "attachment": {
             "type": "template",
@@ -329,19 +329,19 @@ function yep(sender, questionNum) {
                         "type": "postback",
                         "title": "G'DAY",
                         "payload": "1-au",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "Hello",
                         "payload": "1-uk",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "Hi",
                         "payload": "1-us",
-                    }],
-                }]
-            }
-        }
-    };
+					}],
+				}]
+			}
+		}
+	};
     let messageData2 = {
         "attachment": {
             "type": "template",
@@ -355,19 +355,19 @@ function yep(sender, questionNum) {
                         "type": "postback",
                         "title": "VEGEMITE",
                         "payload": "2-au",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "BUTTERMILK PANCAKES",
                         "payload": "2-us",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "SCRAMBLED EGGS BACON & BEAN",
                         "payload": "2-uk",
-                    }],
-                }]
-            }
-        }
-    }
+					}],
+				}]
+			}
+		}
+	}
     let messageData3 = {
         "attachment": {
             "type": "template",
@@ -381,20 +381,20 @@ function yep(sender, questionNum) {
                         "type": "postback",
                         "title": "STATUE OF LIBERTY",
                         "payload": "3-us",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "OPERA HOUSE",
                         "payload": "3-au",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "BIG BEN",
                         "payload": "3-uk",
-                    }],
-                }]
-            }
-        }
-    }
-		let messageData4 = {
+					}],
+				}]
+			}
+		}
+	}
+	let messageData4 = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -407,20 +407,20 @@ function yep(sender, questionNum) {
                         "type": "postback",
                         "title": "SNEAKERS",
                         "payload": "4-us",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "TRAINERS",
                         "payload": "4-uk",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "JOGGERS",
                         "payload": "4-au",
-                    }],
-                }]
-            }
-        }
-    }
-		let messageData5 = {
+					}],
+				}]
+			}
+		}
+	}
+	let messageData5 = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -433,21 +433,21 @@ function yep(sender, questionNum) {
                         "type": "postback",
                         "title": "FISH & CHIPS",
                         "payload": "5-uk",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "HAMBURGER",
                         "payload": "5-us",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "BARBIE",
                         "payload": "5-au",
-                    }],
-                }]
-            }
-        }
-    }
-
-		let messageUK = {
+					}],
+				}]
+			}
+		}
+	}
+	
+	let messageUK = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -460,21 +460,21 @@ function yep(sender, questionNum) {
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
                         "url": "https://goo.gl/WOjpdt",
-                    }, {
+						}, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
                         "url": "http://www.ef.com/fp/brochure/04/form/",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "FREE CONSULTATION",
                         "payload": "consultation",
-                    }],
-                }]
-            }
-        }
-    }
-
-		let messageUS = {
+					}],
+				}]
+			}
+		}
+	}
+	
+	let messageUS = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -483,25 +483,25 @@ function yep(sender, questionNum) {
                     "title": "YOUR PERSONALITY IS SO AMERICAN",
                     "subtitle": "Howdy Buddy, if we didn’t know better we would have guessed you were American! Whether you would end up in LA, NY or somewhere in between we are sure you would love the American way of life. Now cruise on to get an American accent to match your style. Click to proceed to the next step – Your chance to win a two week language course in the states!",
                     "image_url": "http://makione.com/ef/yep-bot/us.png",
-										"buttons": [{
+					"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
                         "url": "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=I%20am%20secretly%20an%20American!&caption=www.ef.com/hello&description=My%20personality%20is%20so%20American%20I%20could%20be%20a%20Hollywood%20star!%20Would%20you%20like%20to%20have%20my%20autograph%3F%20What%20is%20your%20English-speaking%20personality%3F%20Check%20out%20here%20for%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_Sharing1.png",
-                    }, {
+						}, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
                         "url": "http://www.ef.com/fp/brochure/04/form/",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "FREE CONSULTATION",
                         "payload": "consultation",
-                    }],
-                }]
-            }
-        }
-    }
-
-		let messageAU = {
+					}],
+				}]
+			}
+		}
+	}
+	
+	let messageAU = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -510,89 +510,83 @@ function yep(sender, questionNum) {
                     "title": "YOUR PERSONALITY IS SO AUSTRALIAN",
                     "subtitle": "G'day Mate, are you sure you are not a fellow Australian? From the beaches to the outback – we are fairly sure you would fit right into the relaxed Australian lifestyle. Hop on like a Kangaroo and match that chilled out Aussie style of yours with a casual Australian accent. Click to proceed to the next step – Your chance to win a trip to live and study down under!",
                     "image_url": "http://makione.com/ef/yep-bot/au.png",
-						"buttons": [{
+					"buttons": [{
                         "type": "web_url",
                         "title": "SHARE YOUR RESULT",
                         "url": "https://www.facebook.com/dialog/feed?app_id=406791752862060&redirect_uri=http://www.ef.com/Campaign/2015/YourEnglishPersonality/frontend/close.html&display=popup&name=Did%20you%20know%20I%20am%20an%20Australian%3F!&caption=www.ef.com/hello&description=I%E2%80%99m%20hoping%20like%20a%20Kangaroo%20with%20joy.%20My%20personality%20is%20a%20perfect%20match%20with%20the%20lifestyle%20in%20the%20land%20down%20under!%20Check%20what%20your%20second%20homeland%20is.%20There%20is%20a%20chance%20to%20win%20a%20trip%20to%20live%20and%20study%20in%20USA%2C%20UK%20or%20Australia!%0A&link=http%3A%2F%2Fwww.ef.com%2Fcampaign%2Fyourenglishpersonality%2F&picture=http%3A%2F%2Fmedia2.ef.com%2F~%2Fmedia%2Fefcom%2Fcampaign%2F2015%2FYourEnglishPersonality%2FFB_English_Quiz_sharing2.png",
-                    }, {
+						}, {
                         "type": "web_url",
                         "title": "WIN A TRIP",
                         "url": "http://www.ef.com/fp/brochure/04/form/",
-                    }, {
+						}, {
                         "type": "postback",
                         "title": "FREE CONSULTATION",
                         "payload": "consultation",
-                    }],
-                }]
-            }
-        }
-    }
-
+					}],
+				}]
+			}
+		}
+	}
+	
     if (questionNum.indexOf('0') != -1) {
         messageData = messageData1;
-    }
+	}
     if (questionNum.indexOf('1') != -1) {
         messageData = messageData2;
-    }
+	}
     if (questionNum.indexOf('2') != -1) {
         messageData = messageData3;
-    }
-		if (questionNum.indexOf('3') != -1) {
+	}
+	if (questionNum.indexOf('3') != -1) {
         messageData = messageData4;
-    }
-		if (questionNum.indexOf('4') != -1) {
-        messageData = messageData5;
-    }
-
+	}
 	if (questionNum.indexOf('4') != -1) {
         messageData = messageData5;
-    }
+	}
 	
-
-
+	
     if (questionNum.indexOf('uk') != -1) {
         myYep.uk++;
-    }
+	}
     if (questionNum.indexOf('us') != -1) {
         myYep.us++;
-    }
+	}
     if (questionNum.indexOf('au') != -1) {
         myYep.au++;
-    }
-	
+	}
 	
 	
 	//Last Question
 	if (questionNum.indexOf('5') != -1) {
 		console.log('lastQ');
-        let myArrary = [myYep.uk, myYep.us, myYep.au];
-				myArrary = myArrary.sort();
-				let largetst = 	myArrary[2]	; //Last element
-				if(myYep.uk==largetst){messageData = messageUK;}
-				if(myYep.us==largetst){messageData = messageUS;}
-				if(myYep.au==largetst){messageData = messageAU;}
-				messageData = messageUK;
-    }
-
+        //let myArrary = [myYep.uk, myYep.us, myYep.au];
+		//myArrary = myArrary.sort();
+		//let largetst = 	myArrary[2]	; //Last element
+		//if(myYep.uk==largetst){messageData = messageUK;}
+		//if(myYep.us==largetst){messageData = messageUS;}
+		//if(myYep.au==largetst){messageData = messageAU;}
+		messageData = messageUK;
+	}
+	
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
             access_token: token
-        },
+		},
         method: 'POST',
         json: {
             recipient: {
                 id: sender
-            },
+			},
             message: messageData,
-        }
-    }, function(error, response, body) {
+		}
+		}, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
+			} else if (response.body.error) {
             console.log('Error: ', response.body.error)
-        }
-    })
+		}
+	})
 }
 
 // spin spin sugar
