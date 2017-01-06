@@ -74,8 +74,10 @@ app.post('/webhook/', function(req, res) {
 		
         if (event.message && event.message.text) {
             let text = event.message.text.toLowerCase()
+			let isQR = false;
 							
 			if (event.message.hasOwnProperty("quick_reply")) {
+				isQR = true
 				event.postback = true
 				//here
 			 }	
@@ -94,8 +96,11 @@ app.post('/webhook/', function(req, res) {
             if (text === 'qq') {
                 yep(sender, "5")
                 continue
-			}			
-            sendTextMessage(sender, (j++) + " Text received, echo: " + text.substring(0, 200))
+			}	
+			if(isQR != true){
+				sendTextMessage(sender, (j++) + " Text received, echo: " + text.substring(0, 200))
+			}
+            
 		}
         if (event.postback) {
             let text = JSON.stringify(event.postback)
