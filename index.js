@@ -74,7 +74,8 @@ app.post('/webhook/', function(req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text.toLowerCase()
 								
-			console.log(text)							
+			console.log(text);
+			console.log(event);
 								
 			if (event.message.hasOwnProperty("quick_reply")) {
 				let quick_reply_payload = event.message.quick_reply.payload
