@@ -553,8 +553,8 @@ function yep(sender, questionNum) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "YOUR PERSONALITY IS SO AMERICAN",
-                    "subtitle": "Howdy Buddy, if we didn’t know better we would have guessed you were American! Whether you would end up in LA, NY or somewhere in between we are sure you would love the American way of life. Now cruise on to get an American accent to match your style. Click to proceed to the next step – Your chance to win a two week language course in the states!",
+                    "title": "Demo",
+                    "subtitle": "Qualifying questions",
 					"buttons": [ {
                         "type": "postback",
                         "title": "FREE CONSULTATION",
