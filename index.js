@@ -344,7 +344,7 @@ function consultation(sender, action) {
                     "buttons": [{
                         "type": "web_url",
                         "title": "Learn More",
-                        "url": "http://.ef.com/aya/destinations/united-kingdom/london/",
+                        "url": "http://www.ef.com/aya/destinations/united-kingdom/london/",
 					}],
 				}]
 			}
