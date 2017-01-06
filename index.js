@@ -82,13 +82,41 @@ app.post('/webhook/', function(req, res) {
                 yep(sender, "0")
                 continue
 			}
+            if (text === 'qq') {
+				text = "consultation"
+                continue
+			}			
             sendTextMessage(sender, (j++) + " Text received, echo: " + text.substring(0, 200))
 		}
         if (event.postback) {
             let text = JSON.stringify(event.postback)
 			
             if(text.indexOf("consultation") != -1 ){
-				consultation(sender, "age");
+				//consultation(sender, "age");
+				let replyObj = {}
+					replyObj = {
+						text: "HOW LONG WOULD YOU LIKE TO TRAVEL?",
+						quick_replies: [
+							{
+								content_type: "text",
+								title: "7-18",
+								payload: "age1"
+							},
+							{
+								content_type: "text",
+								title: "18-25",
+								payload: "age2"
+							},
+							{
+								content_type: "text",
+								title: "25+",
+								payload: "age3"
+							}
+						]
+					}					
+					lib.sendQuickReplies(token, sender, replyObj)
+				
+				
 				continue
 			}
             if(text.indexOf("end") != -1 ){
@@ -115,23 +143,13 @@ app.post('/webhook/', function(req, res) {
 						quick_replies: [
 							{
 								content_type: "text",
-								title: "3個月",
-								payload: "3mth"
+								title: "2 Weeks to 5 Months",
+								payload: "period1"
 							},
 							{
 								content_type: "text",
-								title: "6個月",
-								payload: "6mth"
-							},
-							{
-								content_type: "text",
-								title: "9個月",
-								payload: "9mth"
-							},
-							{
-								content_type: "text",
-								title: "11個月",
-								payload: "11mth"
+								title: "6 Months or longer",
+								payload: "period2"
 							}
 						]
 					}					
