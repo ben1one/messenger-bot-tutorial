@@ -109,7 +109,7 @@ app.post('/webhook/', function(req, res) {
 					continue
 					}else{
 					//consultation(sender, 'period');
-					
+					let replyObj = {}
 					replyObj = {
 						text: "HOW LONG WOULD YOU LIKE TO TRAVEL?",
 						quick_replies: [
