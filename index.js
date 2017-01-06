@@ -83,7 +83,7 @@ app.post('/webhook/', function(req, res) {
                 continue
 			}
             if (text === 'qq') {
-				text = "consultation"
+                yep(sender, "5")
                 continue
 			}			
             sendTextMessage(sender, (j++) + " Text received, echo: " + text.substring(0, 200))
