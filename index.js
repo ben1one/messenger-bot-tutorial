@@ -94,7 +94,7 @@ app.post('/webhook/', function(req, res) {
 			}			
             sendTextMessage(sender, (j++) + " Text received, echo: " + text.substring(0, 200))
 		}
-        if (event.postback) {
+        if (event.postback || event.message.hasOwnProperty("quick_reply")) {
             let text = JSON.stringify(event.postback)
 			
             if(text.indexOf("consultation") != -1 ){
