@@ -98,7 +98,7 @@ app.post('/webhook/', function(req, res) {
         if (event.postback) {
             let text = JSON.stringify(event.postback)
 			
-			console.log("event.postback", event.postback);
+			console.log("msg.sourceEvent.message.quick_reply", msg.sourceEvent.message.quick_reply);
 			
 			console.log("event.postback" + text);
 			
