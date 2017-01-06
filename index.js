@@ -65,7 +65,9 @@ app.post('/webhook/', function(req, res) {
       url: "http://www.ef.com.hk/"
     }
   ];
-  lib.setMenu(token, setMenuText);
+  lib.setGreeting(token, "Hello！")
+  lib.setMenu(token, setMenuText)
+  lib.setGetStarted(token)
   
   
     for (let i = 0; i < messaging_events.length; i++) {
@@ -95,6 +97,8 @@ app.post('/webhook/', function(req, res) {
 		}
         if (event.postback) {
             let text = JSON.stringify(event.postback)
+			
+			console.log("event.postback", event.postback);
 			
 			console.log("event.postback" + text);
 			
