@@ -77,10 +77,6 @@ app.post('/webhook/', function(req, res) {
 			console.log(text);
 			console.log(event);
 								
-			if (event.message.hasOwnProperty("quick_reply")) {
-				let quick_reply_payload = event.message.quick_reply.payload
-				continue
-			}
 			
             if (text === 'yep') {
                 myYep = {
@@ -97,8 +93,10 @@ app.post('/webhook/', function(req, res) {
 			}			
             sendTextMessage(sender, (j++) + " Text received, echo: " + text.substring(0, 200))
 		}
-        if (event.postback || event.message.hasOwnProperty("quick_reply")) {
+        if (event.postback) {
             let text = JSON.stringify(event.postback)
+			
+			console.log("event.postback" + text);
 			
             if(text.indexOf("consultation") != -1 ){
 				//consultation(sender, "age");
