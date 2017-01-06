@@ -98,19 +98,19 @@ app.post('/webhook/', function(req, res) {
 						text: "HOW LONG WOULD YOU LIKE TO TRAVEL?",
 						quick_replies: [
 							{
-								content_type: "text",
+								content_type: "postback",
 								title: "7-18",
 								payload: "age1"
 							},
 							{
-								content_type: "text",
+								content_type: "postback",
 								title: "18-25",
-								payload: "age2"
+								payload: "age1"
 							},
 							{
-								content_type: "text",
+								content_type: "postback",
 								title: "25+",
-								payload: "age3"
+								payload: "age1"
 							}
 						]
 					}					
@@ -142,12 +142,12 @@ app.post('/webhook/', function(req, res) {
 						text: "HOW LONG WOULD YOU LIKE TO TRAVEL?",
 						quick_replies: [
 							{
-								content_type: "text",
+								content_type: "postback",
 								title: "2 Weeks to 5 Months",
 								payload: "period1"
 							},
 							{
-								content_type: "text",
+								content_type: "postback",
 								title: "6 Months or longer",
 								payload: "period2"
 							}
