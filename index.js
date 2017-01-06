@@ -3,6 +3,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const lib = require('./lib')
 const app = express()
 
 let j = 0;
@@ -38,7 +39,35 @@ app.get('/webhook/', function(req, res) {
 
 // to post data
 app.post('/webhook/', function(req, res) {
-    let messaging_events = req.body.entry[0].messaging
+    let messaging_events = req.body.entry[0].messaging;
+	
+	let setMenuText = [
+    {
+      type: "postback",
+      title: "FAQ | 常見問題",
+      payload: "get_started"
+    },
+    {
+      type: "web_url",
+      title: "索取免費章程",
+      url: "https://www.efcampaigns.com/automation/facebook/bot/form.html",
+			webview_height_ratio: "full",
+      messenger_extensions: true
+    },
+    {
+      type: "postback",
+      title: "聯絡職員",
+      payload: "contact_staff"
+    },
+    {
+      type: "web_url",
+      title: "EF網站",
+      url: "http://www.ef.com.hk/"
+    }
+  ];
+  lib.setMenu(token, setMenuText);
+  
+  
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
@@ -79,7 +108,35 @@ app.post('/webhook/', function(req, res) {
 					
 					continue
 					}else{
-					consultation(sender, 'period');
+					//consultation(sender, 'period');
+					
+					replyObj = {
+						text: "HOW LONG WOULD YOU LIKE TO TRAVEL?",
+						quick_replies: [
+							{
+								content_type: "text",
+								title: "3個月",
+								payload: "3mth"
+							},
+							{
+								content_type: "text",
+								title: "6個月",
+								payload: "6mth"
+							},
+							{
+								content_type: "text",
+								title: "9個月",
+								payload: "9mth"
+							},
+							{
+								content_type: "text",
+								title: "11個月",
+								payload: "11mth"
+							}
+						]
+					}					
+					lib.sendQuickReplies(token, sender, replyObj)
+					
 					continue
 				}
 				continue
