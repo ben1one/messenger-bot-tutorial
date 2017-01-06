@@ -73,6 +73,12 @@ app.post('/webhook/', function(req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text.toLowerCase()
+									
+			if (event.message.hasOwnProperty("quick_reply")) {
+				let quick_reply_payload = event.message.quick_reply.payload
+				continue
+			}
+			
             if (text === 'yep') {
                 myYep = {
                     uk: 0,
@@ -98,17 +104,17 @@ app.post('/webhook/', function(req, res) {
 						text: "HOW LONG WOULD YOU LIKE TO TRAVEL?",
 						quick_replies: [
 							{
-								content_type: "postback",
+								content_type: "text",
 								title: "7-18",
 								payload: "age1"
 							},
 							{
-								content_type: "postback",
+								content_type: "text",
 								title: "18-25",
 								payload: "age1"
 							},
 							{
-								content_type: "postback",
+								content_type: "text",
 								title: "25+",
 								payload: "age1"
 							}
@@ -142,12 +148,12 @@ app.post('/webhook/', function(req, res) {
 						text: "HOW LONG WOULD YOU LIKE TO TRAVEL?",
 						quick_replies: [
 							{
-								content_type: "postback",
+								content_type: "text",
 								title: "2 Weeks to 5 Months",
 								payload: "period1"
 							},
 							{
-								content_type: "postback",
+								content_type: "text",
 								title: "6 Months or longer",
 								payload: "period2"
 							}
