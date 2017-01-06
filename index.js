@@ -94,7 +94,7 @@ app.post('/webhook/', function(req, res) {
                 continue
 			}
             if (text === 'qq') {
-                yep(sender, "5")
+                yep(sender, "qq")
                 continue
 			}	
 			if(isQR != true){
@@ -547,7 +547,23 @@ function yep(sender, questionNum) {
 			}
 		}
 	}
-	
+	let messageQQ = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "YOUR PERSONALITY IS SO AMERICAN",
+                    "subtitle": "Howdy Buddy, if we didn’t know better we would have guessed you were American! Whether you would end up in LA, NY or somewhere in between we are sure you would love the American way of life. Now cruise on to get an American accent to match your style. Click to proceed to the next step – Your chance to win a two week language course in the states!",
+					"buttons": [ {
+                        "type": "postback",
+                        "title": "FREE CONSULTATION",
+                        "payload": "consultation",
+					}],
+				}]
+			}
+		}
+	}	
 	let messageUK = {
         "attachment": {
             "type": "template",
@@ -668,6 +684,10 @@ function yep(sender, questionNum) {
 		//if(myYep.au==largetst){messageData = messageAU;}
 		messageData = messageUS;
 	}
+	if (questionNum.indexOf('qq') != -1) {
+		console.log('lastQ');
+		messageData = messageQQ;
+	}	
 	
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
