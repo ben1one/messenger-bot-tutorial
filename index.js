@@ -150,7 +150,7 @@ app.post('/webhook/', function(req, res) {
 				continue
 			}            
             if(text.indexOf("age") != -1 ){
-				if(text.indexOf("age1") != -1 ){      
+				if(text.indexOf("period1") != -1 ){      
 					sendTextMessage(sender, "Here are some popular destinations for you:", token);          
 					consultation(sender, 'offer1');
 					consultation(sender, 'offer2');  
@@ -175,7 +175,7 @@ app.post('/webhook/', function(req, res) {
 							{
 								content_type: "text",
 								title: "6 Months or longer",
-								payload: "period2"
+								payload: "period1"
 							}
 						]
 					}					
