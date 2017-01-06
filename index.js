@@ -48,13 +48,6 @@ app.post('/webhook/', function(req, res) {
       payload: "get_started"
     },
     {
-      type: "web_url",
-      title: "索取免費章程",
-      url: "https://www.efcampaigns.com/automation/facebook/bot/form.html",
-			webview_height_ratio: "full",
-      messenger_extensions: true
-    },
-    {
       type: "postback",
       title: "聯絡職員",
       payload: "contact_staff"
@@ -78,6 +71,12 @@ app.post('/webhook/', function(req, res) {
 								
 			console.log(text);
 			console.log(event);
+			
+			if (event.message.hasOwnProperty("quick_reply")) {
+				let quick_reply_payload = event.message.quick_reply.payload
+				console.log(`this is the ${quick_reply_payload}`)
+				continue
+			 }
 								
 			
             if (text === 'yep') {
@@ -97,9 +96,7 @@ app.post('/webhook/', function(req, res) {
 		}
         if (event.postback) {
             let text = JSON.stringify(event.postback)
-			
-			console.log("msg.sourceEvent.message.quick_reply", msg.sourceEvent.message.quick_reply);
-			
+						
 			console.log("event.postback" + text);
 			
             if(text.indexOf("consultation") != -1 ){
